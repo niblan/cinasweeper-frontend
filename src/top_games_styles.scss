@@ -1,0 +1,41 @@
+.top_games{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 4rem;
+
+    .buttons{
+        font-weight: 25px;
+        display: flex;
+        flex-direction: column;
+        gap:2rem;
+    }
+
+    .heading{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'SF Pro Rounded';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2rem;
+        line-height: 3rem;
+        font-variant: all-small-caps;
+
+        color: #000000;
+    }
+    .rating{
+
+        width: 401px;
+        height: 532px;
+        background: conic-gradient(from 78.55deg at 50% 50%, #FFFFFF -286.87deg, #FFFFFF 62.32deg, #FFFFFF 73.13deg, #FFFFFF 422.32deg);
+box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25);
+border-radius: 49px;
+        column-gap: 4rem;
+        
+      margin:2rem;
+    }
+
+
+}

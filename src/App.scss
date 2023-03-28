@@ -20,7 +20,7 @@
     text-shadow: 0px 18.64px 4px rgba(88, 47, 200, 0.18), 0px 3.73px 3.73px rgba(0, 0, 0, 0.25);
   }
 
-  .share {
+  .button {
     padding: 1rem;
 
     outline: none;
@@ -37,25 +37,6 @@
     line-height: 1.75rem;
     font-variant: all-small-caps;
 
-    color: #E5A7E0;
-  }
-
-  .games{
-    width: 100%;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    .board{
-
-      width: 300px;
-      height: 300px;
-      background: conic-gradient(from 78.55deg at 50% 50%, #E7FDFF -165deg, #E7FDFF 62.32deg, #E7FDFF 195deg, #E7FDFF 422.32deg);
-box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25);
-border-radius: 49px;
-    }
-
-
+    color: black;
   }
 }

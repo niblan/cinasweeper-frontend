@@ -1,17 +1,12 @@
 import './App.scss'
+import Board from "./boards"
+import TopGames from './top_games'
 
-function App() {
-
+function App(){
   return (
     <div className="game-page">
-      <div className='title'>cincin</div>
-      <div className='games'>
-      <div className='board'></div>
-        <div className='board'></div>
-      </div>
-      <button className='share'>Share</button>
-      </div>
+      <TopGames />
+    </div>
   )
 }
-
 export default App
