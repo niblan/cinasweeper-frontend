@@ -1,42 +1,61 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+.game-page {
+  min-height: 100vh;
+  background-image: linear-gradient(to right bottom, #e7fdff, #caefff, #bfdcff, #ccc4fc, #e5a7e0);
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  .title {
+    font-family: 'SF Pro Rounded';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10rem;
+    line-height: 12rem;
+
+    font-variant: all-small-caps;
+
+    color: #FFFFFF;
+    text-shadow: 0px 18.64px 4px rgba(88, 47, 200, 0.18), 0px 3.73px 3.73px rgba(0, 0, 0, 0.25);
   }
-  to {
-    transform: rotate(360deg);
+
+  .share {
+    padding: 1rem;
+
+    outline: none;
+    border: none;
+    
+    background: conic-gradient(from 180deg at 50% 50%, #E8DAF4 0deg, #F5C1F0 124.99deg, #FDCFFE 250.59deg, #E8DAF4 360deg);
+    box-shadow: 10px 2px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 51px;
+
+    font-family: 'SF Pro Rounded';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    font-variant: all-small-caps;
+
+    color: #E5A7E0;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .games{
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    .board{
+
+      width: 300px;
+      height: 300px;
+      background: conic-gradient(from 78.55deg at 50% 50%, #E7FDFF -165deg, #E7FDFF 62.32deg, #E7FDFF 195deg, #E7FDFF 422.32deg);
+box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25);
+border-radius: 49px;
+    }
+
+
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
