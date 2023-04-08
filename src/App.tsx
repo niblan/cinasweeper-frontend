@@ -4,20 +4,40 @@ import TopGames from "./top_games";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "./main_page";
 import Newgame from "./newgame";
+import NavBar from "./navbar";
+
+const Page = ({ children }) => (
+  <>
+    <NavBar />
+    <div className="content">{children}</div>
+  </>
+);
 
 const router = createBrowserRouter([
   {
     path: "/leaderboard",
-    element: <TopGames />,
+    element: (
+      <Page>
+        <TopGames />
+      </Page>
+    ),
   },
   {
     path: "/games/:game_id",
     loader: boardLoader,
-    element: <Board />,
+    element: (
+      <Page>
+        <Board />
+      </Page>
+    ),
   },
   {
     path: "/newgame",
-    element: <Newgame />,
+    element: (
+      <Page>
+        <Newgame />
+      </Page>
+    ),
   },
 
   {
@@ -35,4 +55,3 @@ function App() {
   );
 }
 export default App;
-

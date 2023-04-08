@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;900&display=swap");
 
 .top_games {
   display: flex;
@@ -14,23 +13,15 @@
     flex-direction: column;
     gap: 2rem;
   }
+  .rating {
+    padding: 2rem;
+    border-radius: 49px;
+    column-gap: 4rem;
 
-  .heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: "M PLUS Rounded 1c", sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 2rem;
-    line-height: 3rem;
-    font-variant: all-small-caps;
 
-    color: #000000;
-  }
-  .rating {
-    width: 401px;
-    height: 532px;
     background: conic-gradient(
       from 78.55deg at 50% 50%,
       #ffffff -286.87deg,
@@ -39,14 +30,42 @@
       #ffffff 422.32deg
     );
     box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 49px;
-    column-gap: 4rem;
 
-    margin: 2rem;
-    .game {
-      color: #000;
-      display: block;
+    .heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      color: #000000;
+
+      font-size: 2rem;
+      line-height: 3rem;
+      font-variant: all-small-caps;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .game {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        text-decoration: none;
+
+        .owner {
+          color: navy;
+        }
+
+        .score {
+          color: royalblue;
+        }
+      }
     }
   }
 }
-

@@ -1,109 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;900&display=swap");
 
+.title {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10rem;
+  line-height: 12rem;
 
-.game-page {
-  min-height: 100vh;
-  background-image: linear-gradient(
-    to right bottom,
-    #e7fdff,
-    #caefff,
-    #bfdcff,
-    #ccc4fc,
-    #e5a7e0
+  font-variant: all-small-caps;
+
+  color: #ffffff;
+  text-shadow: 0px 18.64px 4px rgba(88, 47, 200, 0.18),
+    0px 3.73px 3.73px rgba(0, 0, 0, 0.25);
+}
+
+.share {
+  padding: 1rem;
+
+  outline: none;
+  border: none;
+
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #e8daf4 0deg,
+    #f5c1f0 124.99deg,
+    #fdcffe 250.59deg,
+    #e8daf4 360deg
   );
+  box-shadow: 10px 2px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 51px;
 
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-variant: all-small-caps;
+
+  color: #e5a7e0;
+}
+
+.games {
+  width: 100%;
+  min-height: 50vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-
-  .title {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10rem;
-    line-height: 12rem;
-
-    font-variant: all-small-caps;
-
-    color: #ffffff;
-    text-shadow: 0px 18.64px 4px rgba(88, 47, 200, 0.18),
-      0px 3.73px 3.73px rgba(0, 0, 0, 0.25);
-  }
-
-  .share {
-    padding: 1rem;
-
-    outline: none;
-    border: none;
-
+  .board {
     background: conic-gradient(
-      from 180deg at 50% 50%,
-      #e8daf4 0deg,
-      #f5c1f0 124.99deg,
-      #fdcffe 250.59deg,
-      #e8daf4 360deg
+      from 78.55deg at 50% 50%,
+      #e7fdff -165deg,
+      #e7fdff 62.32deg,
+      #e7fdff 195deg,
+      #e7fdff 422.32deg
     );
-    box-shadow: 10px 2px 7px rgba(0, 0, 0, 0.25);
-    border-radius: 51px;
-
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.5rem;
-    line-height: 1.75rem;
-    font-variant: all-small-caps;
-
-    color: #e5a7e0;
-  }
-
-  .games {
-    width: 100%;
-    min-height: 50vh;
+    box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 49px;
+    padding: 2rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    .board {
-      background: conic-gradient(
-        from 78.55deg at 50% 50%,
-        #e7fdff -165deg,
-        #e7fdff 62.32deg,
-        #e7fdff 195deg,
-        #e7fdff 422.32deg
-      );
-      box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25);
-      border-radius: 49px;
-      padding: 2rem;
+    justify-content: center;
+
+    .board-row {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      color: #9436a4;
+      font-style: bold;
 
-      .board-row {
+      .cell {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        cursor: pointer;
         display: flex;
-        color: #9436a4;
-        font-style: bold;
-
-        .cell {
-          font-family: 'M PLUS Rounded 1c', sans-serif;
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          width: 1.5rem;
-          height: 1.5rem;
-          border-radius: 0.25rem;
-          background-color: #fff;
-          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25),
-            0px 15px 45px rgba(88, 47, 200, 0.54);
-          align-items: center;
-        }
+        flex-direction: column;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.25rem;
+        background-color: #fff;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25),
+          0px 15px 45px rgba(88, 47, 200, 0.54);
+        align-items: center;
       }
     }
   }
 }
 .share {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: "M PLUS Rounded 1c", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -113,4 +95,3 @@
 
   gap: 2rem;
 }
-

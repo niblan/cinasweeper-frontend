@@ -68,7 +68,10 @@ function Cell({
     <span
       className="cell"
       onClick={() => openCell(row, column, setBoard, user, 1)} // -1 opens the cell
-      onContextMenu={(e) => {openCell(row, column, setBoard, user, 0); e.preventDefault()}}
+      onContextMenu={(e) => {
+        openCell(row, column, setBoard, user, 0);
+        e.preventDefault();
+      }}
     >
       {cell === -1 ? "🥨" : cell == -2 ? "🥄" : cell}
     </span>
@@ -199,7 +202,6 @@ export default function Boards() {
 
   return (
     <>
-      <NavBar />
       <div className="games">
         <Board api_url={api_url} id={game.identifier} />
         {game.opponent_id && <Board api_url={api_url} id={game.opponent_id} />}
