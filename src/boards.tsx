@@ -1,5 +1,5 @@
 import "./boards_styles.sass";
-import { Form, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
@@ -170,19 +170,51 @@ function ShareButton({ opponent_id }: { opponent_id: string }) {
   );
 }
 
-export default function Boards() {
-  const loader_data = useLoaderData();
+function extract_loader_data(loader_data: unknown) {
   if (
     !loader_data ||
     typeof loader_data !== "object" ||
     !("game" in loader_data) ||
     !("api_url" in loader_data)
   ) {
-    return null;
+    return { game: null, loader_data: null }
   }
   const game: any = loader_data.game;
   const api_url: any = loader_data.api_url;
+  return { game: game, api_url: api_url };
+}
+
+function TimeSince({ start_time }: { start_time: string }) {
+  const [now, setNow] = useState(Date.now());
+  const start_datetime = new Date(start_time + 'Z');
+  useInterval(() => {
+    setNow(Date.now());
+  }, 1000);
+  const diff = Math.floor((now - start_datetime.getTime()) / 1000);
+  const hours = Math.floor(diff / (60 * 60));
+  const minutes = Math.floor((diff % (60 * 60)) / 60);
+  const seconds = Math.floor((diff % (60 * 60)) % 60);
+  return (
+    <div className="timer">{String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}</div>
+  );
+}
+
+export default function Boards() {
+  const loader_data = useLoaderData();
+  const { api_url } = extract_loader_data(loader_data);
+  const [game, setGame] = useState(extract_loader_data(loader_data).game);
   const user: any = useAuthState(auth)[0];
+
+  useInterval(() => {
+    const refetch_game = () => {
+      fetch(`${api_url}/games/${game.identifier}`)
+        .then((res) => res.json())
+        .then((game) => {
+          setGame(game);
+        });
+    };
+    refetch_game();
+  }, game.started ? null : 1000);
 
   useEffect(() => {
     if (!user) {
@@ -207,6 +239,17 @@ export default function Boards() {
         {game.opponent_id && <Board api_url={api_url} id={game.opponent_id} />}
       </div>
       {game.opponent_id && <ShareButton opponent_id={game.opponent_id} />}
+      {game.started ? (game.ended ? (
+        <div className="score">
+          Score: {game.score}
+        </div>
+      ) : (
+        <TimeSince start_time={game.started_time} />
+      )) : (
+        <div className="waiting">
+          Waiting for opponent...
+        </div>
+      )}
     </>
   );
 }
