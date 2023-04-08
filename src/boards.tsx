@@ -106,6 +106,11 @@ function Board({ api_url, id, game = null, setGame }: { api_url: string; id: str
 
   return (
     <div className="board">
+      {game && (
+        <span className="owner">
+          {game.owner}
+        </span>
+      )}
       {board.map((row: number[], rowNum: number) => (
         <div className="board-row">
           {row.map((cell: number, columnNum: number) => (
@@ -214,6 +219,7 @@ export default function Boards() {
   const loader_data = useLoaderData();
   const { api_url } = extract_loader_data(loader_data);
   const [game, setGame] = useState(extract_loader_data(loader_data).game);
+  const [opponent_game, setOpponentGame] = useState(null);
   const user: any = useAuthState(auth)[0];
 
   useInterval(() => {
@@ -243,11 +249,22 @@ export default function Boards() {
     }
   }, [api_url, game, user]);
 
+  useEffect(() => {
+    if (!game.opponent_id) {
+      return;
+    }
+    fetch(`${api_url}/games/${game.opponent_id}`)
+      .then((res) => res.json())
+      .then((game) => {
+        setOpponentGame(game);
+      });
+  }, [api_url, game]);
+
   return (
     <>
       <div className="games">
         <Board game={game} setGame={setGame} api_url={api_url} id={game.identifier} />
-        {game.opponent_id && <Board api_url={api_url} id={game.opponent_id} />}
+        {game.opponent_id && <Board game={opponent_game} api_url={api_url} id={game.opponent_id} />}
       </div>
       {game.opponent_id && <ShareButton opponent_id={game.opponent_id} />}
       {game.started ? (game.ended ? (
