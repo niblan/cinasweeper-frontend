@@ -8,10 +8,10 @@ export default function NavBar() {
 
   return (
     <div className="navbar">
-      <Link to="/newgame"> new game</Link>
-      <Link to="/leaderboard">leader board </Link>
+      <Link className="navbar-item" to="/newgame"> new game</Link>
+      <Link className="navbar-item" to="/leaderboard">leader board </Link>
       {user ? (
-        <span className="user" onClick={logout}>
+        <span className="navbar-item user" onClick={logout}>
           {user.photoURL && (
             <img
               className="avatar"
@@ -23,7 +23,7 @@ export default function NavBar() {
           <span>{user.displayName}</span>
         </span>
       ) : (
-        <span onClick={login}>log in</span>
+        <span className="navbar-item" onClick={login}>log in</span>
       )}
     </div>
   );
