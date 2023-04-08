@@ -5,7 +5,7 @@ import { auth } from "./firebase";
 
 export default function Newgame() {
   const api_url = import.meta.env.VITE_API_URL;
-  const [user, loading] = useAuthState(auth);
+  const user: any = useAuthState(auth)[0];
   const navigate = useNavigate();
 
   const createGame = async () => {

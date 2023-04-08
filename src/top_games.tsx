@@ -5,14 +5,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import NavBar from "./navbar";
 
-function GlobalLeaderboard({ api_url }) {
+function GlobalLeaderboard({ api_url }: { api_url: string }) {
   const games = use(
     fetch(`${api_url}/leaders_board`).then((res) => res.json())
   );
 
   return (
     <div className="content">
-      {games.map((game) => (
+      {games.map((game: any) => (
         <Link className="game" to={`/games/${game.identifier}`}>
           {game.owner}
         </Link>
@@ -21,10 +21,10 @@ function GlobalLeaderboard({ api_url }) {
   );
 }
 
-function YourGames({ api_url }) {
-  const [user, loading] = useAuthState(auth);
+function YourGames({ api_url }: { api_url: string }) {
+  const user: any = useAuthState(auth)[0];
   if (!user) {
-    return;
+    return null;
   }
   const jwt = user.accessToken;
   const games = use(
@@ -38,7 +38,7 @@ function YourGames({ api_url }) {
 
   return (
     <div className="content">
-      {games.map((game) => (
+      {games.map((game: any) => (
         <Link className="game" to={`/games/${game.identifier}`}>
           {game.owner}
         </Link>
@@ -74,4 +74,3 @@ export default function TopGames() {
     </>
   );
 }
-

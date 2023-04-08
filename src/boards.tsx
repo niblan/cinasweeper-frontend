@@ -21,10 +21,24 @@ export async function loader({ params }: { params: any }) {
   return { game: game, api_url: api_url };
 }
 
-function Cell({ cell, row, column, setBoard, game_id, api_url }) {
+function Cell({
+  cell,
+  row,
+  column,
+  setBoard,
+  game_id,
+  api_url,
+}: {
+  cell: number | null;
+  row: number;
+  column: number;
+  setBoard: any;
+  game_id: string;
+  api_url: string;
+}) {
   const [user, loading] = useAuthState(auth);
 
-  const openCell = async (row, column, setBoard, user) => {
+  const openCell = async (row: number, column: number, setBoard: any, user: any) => {
     const jwt = user.accessToken;
     const request = await fetch(`${api_url}/games/${game_id}/moves`, {
       method: "POST",
@@ -54,7 +68,7 @@ function Cell({ cell, row, column, setBoard, game_id, api_url }) {
   );
 }
 
-function Board({ api_url, id }) {
+function Board({ api_url, id }: { api_url: string, id: string }) {
   const [board, setBoard] = useState([]);
 
   const fetchBoard = async () => {
@@ -73,9 +87,9 @@ function Board({ api_url, id }) {
 
   return (
     <div className="board">
-      {board.map((row, rowNum) => (
+      {board.map((row: number[], rowNum: number) => (
         <div className="board-row">
-          {row.map((cell, columnNum) => (
+          {row.map((cell: number, columnNum: number) => (
             <Cell
               cell={cell}
               row={rowNum}
@@ -91,7 +105,7 @@ function Board({ api_url, id }) {
   );
 }
 
-function ShareButton({ opponent_id }) {
+function ShareButton({ opponent_id }: { opponent_id: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -147,8 +161,13 @@ function ShareButton({ opponent_id }) {
 }
 
 export default function Boards() {
-  const { game, api_url } = useLoaderData();
-  const [user, loading] = useAuthState(auth);
+  const loader_data = useLoaderData();
+  if (!loader_data || typeof loader_data !== "object" || !("game" in loader_data) || !("api_url" in loader_data)) {
+    return null;
+  }
+  const game: any = loader_data.game;
+  const api_url: any = loader_data.api_url;
+  const user: any = useAuthState(auth)[0];
 
   useEffect(() => {
     if (!user) {
