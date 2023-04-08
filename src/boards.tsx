@@ -66,7 +66,7 @@ function Cell({
       const move_result = await request.json();
       setBoard(move_result.state.board);
       if (move_result.game_changed && game && setGame) {
-        setGame({...game, ended: true, score: null});
+        setGame({ ...game, ended: true, score: null });
         const updated_game = await fetch(`${api_url}/games/${game_id}`).then((res) => res.json());
         setGame(updated_game);
       }
@@ -75,19 +75,19 @@ function Cell({
 
   return (
     <span
-      className="cell"
+      className={`cell ${cell === null ? "closes" : "open"}`}
       onClick={() => openCell(row, column, setBoard, user, 1)} // -1 opens the cell
       onContextMenu={(e) => {
         openCell(row, column, setBoard, user, 0);
         e.preventDefault();
       }}
     >
-      {cell === -1 ? "🥨" : cell == -2 ? "🥄" : cell}
+      {cell === -1 ? "🥨" : cell == -2 ? "🥄" : (cell === 0 ? null : cell)}
     </span>
   );
 }
 
-function Board({ api_url, id, game=null, setGame }: { api_url: string; id: string, game?: any, setGame?: (game: any) => void }) {
+function Board({ api_url, id, game = null, setGame }: { api_url: string; id: string, game?: any, setGame?: (game: any) => void }) {
   const [board, setBoard] = useState([]);
 
   const fetchBoard = async () => {
