@@ -75,14 +75,14 @@ function Cell({
 
   return (
     <span
-      className={`cell ${cell === null ? "closes" : "open"}`}
+      className={`cell ${cell === null ? "closed" : "open"} ${cell === -1 ? "mine" : (cell === -2 ? "flag" : "number")}`}
       onClick={() => openCell(row, column, setBoard, user, 1)} // -1 opens the cell
       onContextMenu={(e) => {
         openCell(row, column, setBoard, user, 0);
         e.preventDefault();
       }}
     >
-      {cell === -1 ? "🥨" : cell == -2 ? "🥄" : (cell === 0 ? null : cell)}
+      {cell && cell > 0 && cell}
     </span>
   );
 }
