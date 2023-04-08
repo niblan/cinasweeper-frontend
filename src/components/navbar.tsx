@@ -1,4 +1,4 @@
-import { auth, login, logout } from "./firebase";
+import { auth, login, logout } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import "./navbar.sass";

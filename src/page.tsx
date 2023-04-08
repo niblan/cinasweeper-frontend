@@ -1,4 +1,4 @@
-import NavBar from "./navbar";
+import NavBar from "./components/navbar";
 import "./page.sass";
 
 export default function Page({ children }: { children: JSX.Element | JSX.Element[] }) {

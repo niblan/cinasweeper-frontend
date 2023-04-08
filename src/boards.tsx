@@ -3,10 +3,10 @@ import { Form, useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
-import NavBar from "./navbar";
 import Modal from "react-modal";
 import { useInterval } from "usehooks-ts";
 import { BiCopy } from "react-icons/bi";
+import Button from "./components/button";
 
 export async function loader({ params }: { params: any }) {
   const api_url = import.meta.env.VITE_API_URL;
@@ -163,9 +163,9 @@ function ShareButton({ opponent_id }: { opponent_id: string }) {
           </span>
         </span>
       </Modal>
-      <button className="button" onClick={openModal}>
-        Share
-      </button>
+      <Button onClick={openModal}>
+        SHARE
+      </Button>
     </>
   );
 }
