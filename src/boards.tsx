@@ -38,7 +38,12 @@ function Cell({
 }) {
   const [user, loading] = useAuthState(auth);
 
-  const openCell = async (row: number, column: number, setBoard: any, user: any) => {
+  const openCell = async (
+    row: number,
+    column: number,
+    setBoard: any,
+    user: any
+  ) => {
     const jwt = user.accessToken;
     const request = await fetch(`${api_url}/games/${game_id}/moves`, {
       method: "POST",
@@ -68,7 +73,7 @@ function Cell({
   );
 }
 
-function Board({ api_url, id }: { api_url: string, id: string }) {
+function Board({ api_url, id }: { api_url: string; id: string }) {
   const [board, setBoard] = useState([]);
 
   const fetchBoard = async () => {
@@ -162,7 +167,12 @@ function ShareButton({ opponent_id }: { opponent_id: string }) {
 
 export default function Boards() {
   const loader_data = useLoaderData();
-  if (!loader_data || typeof loader_data !== "object" || !("game" in loader_data) || !("api_url" in loader_data)) {
+  if (
+    !loader_data ||
+    typeof loader_data !== "object" ||
+    !("game" in loader_data) ||
+    !("api_url" in loader_data)
+  ) {
     return null;
   }
   const game: any = loader_data.game;
