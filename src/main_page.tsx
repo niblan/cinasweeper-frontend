@@ -6,8 +6,8 @@ export default function MainPage() {
     <div className="mainpage">
       <NavBar />
       <div className="logos">
-        <div className="title1">cin</div>
-        <div className="title2">cin</div>
+        <div className="title1">CIN</div>
+        <div className="title2">CIN</div>
       </div>
       <div className="dscr">mini-game about life at apps faculty in ucu</div>
     </div>
