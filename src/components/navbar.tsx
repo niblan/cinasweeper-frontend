@@ -9,7 +9,7 @@ export default function NavBar() {
   return (
     <div className="navbar">
       <Link className="navbar-item" to="/">home</Link>
-      <Link className="navbar-item" to="/leaderboard">leader board</Link>
+      <Link className="navbar-item" to="/leaderboard">top</Link>
       {user ? (
         <span className="navbar-item user" onClick={logout}>
           {user.photoURL && (

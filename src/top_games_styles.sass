@@ -1,20 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;900&display=swap")
+@import "./font"
 
 .top_games
   display: flex
   flex-direction: row
   align-items: center
   justify-content: space-evenly
-  gap: 4rem
+  flex-wrap: wrap
+  width: 100%
+  gap: 6rem
 
   .rating
     padding: 2rem
-    border-radius: 49px
-    column-gap: 4rem
+    border-radius: 3rem
 
-    font-family: "M PLUS Rounded 1c", sans-serif
-    font-style: normal
-    font-weight: 400
+    @include rounded-font(400)
 
     background: conic-gradient( from 78.55deg at 50% 50%, #ffffff -286.87deg, #ffffff 62.32deg, #ffffff 73.13deg, #ffffff 422.32deg )
     box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.25)
@@ -24,26 +23,33 @@
       flex-direction: column
       align-items: center
 
-      color: #000000
+      color: #28194d
 
-      font-size: 2rem
-      line-height: 3rem
+      font-size: 4rem
       font-variant: all-small-caps
+      padding: 0 1rem
 
     .leaderboard
       display: flex
       flex-direction: column
       align-items: flex-start
       justify-content: flex-start
+      padding: 1rem 0
 
       .game
         display: flex
         flex-direction: row
         align-items: center
         justify-content: space-between
+        border-radius: .5rem
+        padding: 0 1.5rem
 
         width: 100%
         text-decoration: none
+        font-size: 1.5rem
+
+        &:hover
+          background: #f8f5f8
 
         .owner
           color: navy
