@@ -13,8 +13,8 @@ export default function MainPage() {
         </div>
         <div className="description">mini-game about life at apps faculty in ucu</div>
         <div className="game-start-buttons">
-          <Button>PLAY SOLO</Button>
-          <Button href="/newgame">PLAY WITH A FRIEND</Button>
+          <Button href="/newgame/singleplayer">PLAY SOLO</Button>
+          <Button href="/newgame/1v1">PLAY WITH A FRIEND</Button>
         </div>
       </div>
     </div>

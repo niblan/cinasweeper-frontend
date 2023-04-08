@@ -24,10 +24,18 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: "/newgame",
+        path: "/newgame/1v1",
         element: (
             <Page>
-                <Newgame />
+                <Newgame mode="1v1" />
+            </Page>
+        ),
+    },
+    {
+        path: "/newgame/singleplayer",
+        element: (
+            <Page>
+                <Newgame mode="singleplayer" />
             </Page>
         ),
     },

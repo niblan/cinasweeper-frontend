@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 
-export default function Newgame() {
+export default function Newgame({ mode }: { mode: string }) {
   const api_url = import.meta.env.VITE_API_URL;
   const user: any = useAuthState(auth)[0];
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function Newgame() {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        gamemode: "1v1",
+        gamemode: mode,
       }),
     }).then((res) => res.json());
     console.log(game.identifier);
@@ -29,7 +29,7 @@ export default function Newgame() {
 
   useEffect(() => {
     createGame();
-  }, []);
+  }, [mode]);
 
   return <div></div>;
 }
