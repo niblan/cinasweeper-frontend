@@ -28,6 +28,8 @@ function Cell({
   setBoard,
   game_id,
   api_url,
+  game,
+  setGame
 }: {
   cell: number | null;
   row: number;
@@ -35,6 +37,8 @@ function Cell({
   setBoard: any;
   game_id: string;
   api_url: string;
+  game: any;
+  setGame?: (game: any) => void;
 }) {
   const [user, loading] = useAuthState(auth);
 
@@ -59,8 +63,13 @@ function Cell({
       }),
     });
     if (request.status === 200) {
-      const game_state = await request.json();
-      setBoard(game_state.board);
+      const move_result = await request.json();
+      setBoard(move_result.state.board);
+      if (move_result.game_changed && game && setGame) {
+        setGame({...game, ended: true, score: null});
+        const updated_game = await fetch(`${api_url}/games/${game_id}`).then((res) => res.json());
+        setGame(updated_game);
+      }
     }
   };
 
@@ -78,7 +87,7 @@ function Cell({
   );
 }
 
-function Board({ api_url, id }: { api_url: string; id: string }) {
+function Board({ api_url, id, game=null, setGame }: { api_url: string; id: string, game?: any, setGame?: (game: any) => void }) {
   const [board, setBoard] = useState([]);
 
   const fetchBoard = async () => {
@@ -107,6 +116,8 @@ function Board({ api_url, id }: { api_url: string; id: string }) {
               setBoard={setBoard}
               game_id={id}
               api_url={api_url}
+              game={game}
+              setGame={setGame}
             />
           ))}
         </div>
@@ -235,13 +246,13 @@ export default function Boards() {
   return (
     <>
       <div className="games">
-        <Board api_url={api_url} id={game.identifier} />
+        <Board game={game} setGame={setGame} api_url={api_url} id={game.identifier} />
         {game.opponent_id && <Board api_url={api_url} id={game.opponent_id} />}
       </div>
       {game.opponent_id && <ShareButton opponent_id={game.opponent_id} />}
       {game.started ? (game.ended ? (
         <div className="score">
-          Score: {game.score}
+          Score: {game.score === null ? "Loading..." : game.score}
         </div>
       ) : (
         <TimeSince start_time={game.started_time} />
