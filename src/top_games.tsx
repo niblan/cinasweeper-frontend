@@ -3,7 +3,6 @@ import { use, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
-import NavBar from "./components/navbar";
 
 function GlobalLeaderboard({ api_url }: { api_url: string }) {
   const games = use(
