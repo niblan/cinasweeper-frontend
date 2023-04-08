@@ -1,8 +1,12 @@
 import "./main_page_styles.sass";
 import NavBar from "./components/navbar";
 import Button from "./components/button";
+import { auth, login } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function MainPage() {
+  const [user, loading] = useAuthState(auth);
+
   return (
     <div className="app mainpage">
       <NavBar />
@@ -13,8 +17,14 @@ export default function MainPage() {
         </div>
         <div className="description">mini-game about life at apps faculty in ucu</div>
         <div className="game-start-buttons">
-          <Button href="/newgame/singleplayer">PLAY SOLO</Button>
-          <Button href="/newgame/1v1">PLAY WITH A FRIEND</Button>
+          {user ? (
+            <>
+              <Button href="/newgame/singleplayer">PLAY SOLO</Button>
+              <Button href="/newgame/1v1">PLAY WITH A FRIEND</Button>
+            </>
+          ) : (
+            <Button onClick={login}>LOG IN</Button>
+          )}
         </div>
       </div>
     </div>
