@@ -1,4 +1,4 @@
-import "./main_page_styles.scss";
+import "./main_page_styles.sass";
 import NavBar from "./navbar";
 
 export default function MainPage() {

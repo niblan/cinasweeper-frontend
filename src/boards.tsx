@@ -1,4 +1,4 @@
-import "./boards_styles.scss";
+import "./boards_styles.sass";
 import { Form, useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";

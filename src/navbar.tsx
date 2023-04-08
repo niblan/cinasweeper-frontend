@@ -1,7 +1,7 @@
 import { auth, login, logout } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import "./navbar.scss";
+import "./navbar.sass";
 
 export default function NavBar() {
   const [user, loading] = useAuthState(auth);

@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./App.sass";
 import Board, { loader as boardLoader } from "./boards";
 import TopGames from "./top_games";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

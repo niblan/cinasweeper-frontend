@@ -1,4 +1,4 @@
-import "./top_games_styles.scss";
+import "./top_games_styles.sass";
 import { use, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
