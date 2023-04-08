@@ -141,7 +141,7 @@ function ShareButton({ opponent_id }: { opponent_id: string }) {
           },
         }}
       >
-        <span className="share-link">
+        <span className="share">
           <span>
             {window.location.origin}/games/{opponent_id}
           </span>
