@@ -1,28 +1,10 @@
 import "./main_page_styles.scss";
-import { auth, login, logout } from "./firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import NavBar from "./navbar";
 
 export default function MainPage() {
-  const [user, loading] = useAuthState(auth);
-
   return (
     <div className="mainpage">
-      <div className="navbar">
-        {user ? (
-          <span onClick={logout}>
-            {user.photoURL && (
-              <img
-                src={user.photoURL}
-                referrerPolicy="no-referrer"
-                alt="user"
-              />
-            )}
-            <span>{user.displayName}</span>
-          </span>
-        ) : (
-          <span onClick={login}>Log in</span>
-        )}
-      </div>
+      <NavBar />
       <div className="logos">
         <div className="title1">cin</div>
         <div className="title2">cin</div>
