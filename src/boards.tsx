@@ -42,7 +42,8 @@ function Cell({
     row: number,
     column: number,
     setBoard: any,
-    user: any
+    user: any,
+    mode: number
   ) => {
     const jwt = user.accessToken;
     const request = await fetch(`${api_url}/games/${game_id}/moves`, {
@@ -54,7 +55,7 @@ function Cell({
       body: JSON.stringify({
         x: row,
         y: column,
-        action: -1,
+        action: mode,
       }),
     });
     if (request.status === 200) {
@@ -66,7 +67,8 @@ function Cell({
   return (
     <span
       className="cell"
-      onClick={() => openCell(row, column, setBoard, user)}
+      onClick={() => openCell(row, column, setBoard, user, 1)} // -1 opens the cell
+      onContextMenu={(e) => {openCell(row, column, setBoard, user, 0); e.preventDefault()}}
     >
       {cell === -1 ? "🥨" : cell == -2 ? "🥄" : cell}
     </span>
