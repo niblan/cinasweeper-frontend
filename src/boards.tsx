@@ -253,6 +253,9 @@ export default function Boards() {
       {game.started ? (game.ended ? (
         <div className="score">
           Score: {game.score === null ? "Loading..." : game.score}
+          <Button href={`/newgame/${game.game_mode}`}>
+            PLAY AGAIN
+          </Button>
         </div>
       ) : (
         <TimeSince start_time={game.started_time} />
