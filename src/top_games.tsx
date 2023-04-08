@@ -11,7 +11,7 @@ function GlobalLeaderboard({ api_url }: { api_url: string }) {
   );
 
   return (
-    <div className="content">
+    <div className="leaderboard">
       {games.map((game: any) => (
         <Link className="game" to={`/games/${game.identifier}`}>
           <span className="owner">{game.owner}</span>
@@ -38,7 +38,7 @@ function YourGames({ api_url }: { api_url: string }) {
   );
 
   return (
-    <div className="content">
+    <div className="leaderboard">
       {games.map((game: any) => (
         <Link className="game" to={`/games/${game.identifier}`}>
           <span className="owner">{game.owner}</span>
@@ -60,10 +60,6 @@ export default function TopGames() {
           <Suspense fallback={<span className="loading">Loading...</span>}>
             <GlobalLeaderboard api_url={api_url} />
           </Suspense>
-        </div>
-        <div className="buttons">
-          <button className="button">SIGNLE</button>
-          <button className="button">MULTIPLE</button>
         </div>
         <div className="rating">
           <div className="heading">top your games</div>
