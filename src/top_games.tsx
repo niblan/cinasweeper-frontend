@@ -50,6 +50,7 @@ function YourGames({ api_url }: { api_url: string }) {
 
 export default function TopGames() {
   const api_url = import.meta.env.VITE_API_URL;
+  const user = useAuthState(auth)[0];
 
   return (
     <>
@@ -60,12 +61,14 @@ export default function TopGames() {
             <GlobalLeaderboard api_url={api_url} />
           </Suspense>
         </div>
-        <div className="rating">
-          <div className="heading">top your games</div>
-          <Suspense fallback={<span className="loading">Loading...</span>}>
-            <YourGames api_url={api_url} />
-          </Suspense>
-        </div>
+        {user && (
+          <div className="rating">
+            <div className="heading">top your games</div>
+            <Suspense fallback={<span className="loading">Loading...</span>}>
+              <YourGames api_url={api_url} />
+            </Suspense>
+          </div>
+        )}
       </div>
     </>
   );
