@@ -12,10 +12,11 @@
 
   .navbar-item
     display: flex
-    flex-direction: row
+    flex-direction: column
     align-items: center
     gap: .5rem
     cursor: pointer
+    position: relative
 
     @include rounded-font(900)
     font-size: 2rem
@@ -24,7 +25,12 @@
     text-decoration: none
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 15px 45px rgba(88, 47, 200, 0.54)
 
-    &.user
+    .user
+      display: flex
+      flex-direction: row
+      align-items: center
+      gap: .5rem
+
       font-size: 1.5rem
       border-radius: 1rem
       padding: 0.5rem
@@ -34,3 +40,22 @@
         border-radius: 50%
         height: 25px
         width: 25px
+
+    .dropdown
+      position: absolute
+      top: 100%
+      right: 0
+      left: 0
+
+      background-color: white
+      border-radius: 1rem
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 15px 45px rgba(88, 47, 200, 0.54)
+      padding: 1rem
+
+      .dropdown-item
+        display: flex
+        flex-direction: row
+        align-items: center
+        gap: .5rem
+        font-size: 1rem
+        color: black
